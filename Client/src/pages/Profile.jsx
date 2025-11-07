@@ -12,20 +12,25 @@ export default function Profile() {
   const [loading, setLoading] = useState(false);
 
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => setPreview(reader.result);
-      reader.readAsDataURL(file);
-      setProfilePic(reader.result);
-    }
-  };
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setPreview(reader.result);
+      setProfilePic(reader.result); // ✅ Move this inside here
+    };
+    reader.readAsDataURL(file);
+  }
+};
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
       const res = await axios.put("/auth/update-profile", { fullName, bio, profilePic });
+      console.log(profilePic,fullName,bio)
+      console.log(res.data.user)
       if (res.data.success) {
         login(res.data.user, localStorage.getItem("token"));
         setMessage("✅ Profile updated successfully!");

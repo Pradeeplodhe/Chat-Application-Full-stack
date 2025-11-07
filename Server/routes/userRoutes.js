@@ -25,9 +25,13 @@ import { protectRoute } from "../middlewares/protectRoute.js";
 
 const router = express.Router();
 
+
+router.get("/",()=>{
+    console.log("testred")
+})
 router.post("/signup", signup);
 router.post("/login", login);
 router.get("/checkauth", protectRoute, checkAuth);
-router.put("/update-profile", protectRoute, updateprofile);
+router.put("/update-profile",()=>{console.log("/update-profile")}, protectRoute, updateprofile);
 
 export default router;

@@ -2,9 +2,9 @@ import React from "react";
 
 export default function Sidebar({ users, onlineUsers, selectedUser, setSelectedUser }) {
   return (
-    <div className="w-1/4 min-w-[280px] bg-gradient-to-b from-blue-950 via-blue-900 to-blue-800 border-r border-blue-700 overflow-y-auto shadow-xl relative">
+    <div className="w-1/4 min-w-[280px] bg-gradient-to-b from-gray-900 via-black to-gray-800 border-r border-gray-700 overflow-y-auto shadow-xl relative">
       {/* Sidebar header */}
-      <h2 className="text-3xl font-bold p-5 border-b border-blue-700 sticky top-0 bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400 bg-clip-text text-transparent z-10">
+      <h2 className="text-3xl font-bold p-5 border-b border-gray-700 sticky top-0 bg-gradient-to-r from-blue-800 via-purple-800 to-cyan-700 bg-clip-text text-transparent z-10">
         Users
       </h2>
 
@@ -20,17 +20,17 @@ export default function Sidebar({ users, onlineUsers, selectedUser, setSelectedU
               onClick={() => setSelectedUser(u)}
               className={`flex justify-between items-center p-4 mb-3 rounded-2xl cursor-pointer transition-all duration-300
                 ${isSelected
-                  ? "bg-gradient-to-r from-indigo-700 via-purple-700 to-blue-600 shadow-2xl scale-105 animate-selectedGlow text-white"
-                  : "hover:bg-blue-700 dark:hover:bg-blue-900 hover:scale-105 hover:shadow-lg"}`}
+                  ? "bg-gradient-to-r from-indigo-800 via-purple-800 to-blue-900 shadow-2xl scale-105 animate-selectedGlow text-white"
+                  : "hover:bg-gray-800 hover:scale-105 hover:shadow-lg"}`}
             >
               <span className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gradient-to-tr from-purple-700 via-indigo-700 to-blue-600 rounded-full flex items-center justify-center text-white font-bold shadow-lg animate-float">
+                <div className="w-12 h-12 bg-gradient-to-tr from-indigo-700 via-purple-700 to-blue-800 rounded-full flex items-center justify-center text-white font-bold shadow-lg animate-float">
                   {u.fullName.charAt(0)}
                 </div>
-                <span className="text-lg font-medium text-blue-100">{u.fullName}</span>
+                <span className="text-lg font-medium text-gray-100">{u.fullName}</span>
               </span>
               {isOnline && (
-                <span className="w-4 h-4 bg-green-400 rounded-full animate-ping shadow-md ring-2 ring-white dark:ring-blue-900"></span>
+                <span className="w-4 h-4 bg-green-400 rounded-full animate-ping shadow-md ring-2 ring-gray-900"></span>
               )}
             </li>
           );
@@ -39,13 +39,13 @@ export default function Sidebar({ users, onlineUsers, selectedUser, setSelectedU
 
       {/* Floating bubbles */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(25)].map((_, i) => (
           <div
             key={i}
             className="absolute bg-white/20 rounded-full animate-bubble"
             style={{
-              width: `${8 + Math.random() * 25}px`,
-              height: `${8 + Math.random() * 25}px`,
+              width: `${8 + Math.random() * 30}px`,
+              height: `${8 + Math.random() * 30}px`,
               left: `${Math.random() * 100}%`,
               animationDuration: `${4 + Math.random() * 6}s`,
               bottom: `-${Math.random() * 50}px`,
@@ -56,17 +56,17 @@ export default function Sidebar({ users, onlineUsers, selectedUser, setSelectedU
       </div>
 
       {/* Moving wave overlay */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-blue-900 via-blue-800 to-transparent opacity-50 animate-wave"></div>
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black via-gray-900 to-transparent opacity-40 animate-wave"></div>
 
       {/* Light rays */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        {[...Array(5)].map((_, i) => (
+        {[...Array(6)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1/2 h-full bg-gradient-to-r from-white/10 to-transparent opacity-15 animate-lightRay"
+            className="absolute w-1/2 h-full bg-gradient-to-r from-white/10 to-transparent opacity-10 animate-lightRay"
             style={{
-              left: `${i * 20}%`,
-              animationDuration: `${10 + Math.random() * 5}s`,
+              left: `${i * 16}%`,
+              animationDuration: `${12 + Math.random() * 5}s`,
               animationDelay: `${Math.random() * 5}s`,
             }}
           ></div>
@@ -75,14 +75,14 @@ export default function Sidebar({ users, onlineUsers, selectedUser, setSelectedU
 
       {/* Swimming fish silhouettes */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        {[...Array(5)].map((_, i) => (
+        {[...Array(7)].map((_, i) => (
           <div
             key={i}
             className="absolute w-6 h-2 bg-white/15 rounded-full animate-fish"
             style={{
               top: `${Math.random() * 80}%`,
               left: `-${Math.random() * 100}px`,
-              animationDuration: `${8 + Math.random() * 5}s`,
+              animationDuration: `${6 + Math.random() * 6}s`,
               animationDelay: `${Math.random() * 5}s`,
             }}
           ></div>
